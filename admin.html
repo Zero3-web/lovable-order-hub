@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serenity Spa - Administración</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="loginScreen" class="login-screen">
+    <div class="login-container card">
+      <div class="logo">
+        <svg class="leaf-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+        </svg>
+        <h1>Serenity Spa</h1>
+      </div>
+      
+      <h2>Acceso Administración</h2>
+      
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="password">Contraseña de administrador</label>
+          <input type="password" id="password" required>
+        </div>
+        <button type="submit" class="button">Ingresar</button>
+      </form>
+      
+      <a href="index.html" class="back-link">Volver a la página principal</a>
+    </div>
+  </div>
+  
+  <div id="adminDashboard" class="admin-dashboard hidden">
+    <header class="admin-header">
+      <div class="container">
+        <div class="admin-header-content">
+          <div class="logo">
+            <svg class="leaf-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+            </svg>
+            <h2>Serenity Spa - Panel de Administración</h2>
+          </div>
+          <button id="logoutBtn" class="logout-button">Salir</button>
+        </div>
+      </div>
+    </header>
+    
+    <main class="container">
+      <h2 class="section-title">Reservas Actuales</h2>
+      
+      <div id="ordersContainer" class="orders-container">
+        <div class="no-orders-message">No hay reservas registradas actualmente.</div>
+      </div>
+      
+      <div id="paymentModal" class="modal">
+        <div class="modal-content payment-modal">
+          <h2>Finalizar y Cobrar Reserva</h2>
+          <div id="paymentDetails"></div>
+          
+          <div class="form-group">
+            <label for="paymentMethod">Método de pago</label>
+            <select id="paymentMethod" required>
+              <option value="" disabled selected>Selecciona un método</option>
+              <option value="cash">Efectivo</option>
+              <option value="card">Tarjeta de Crédito/Débito</option>
+              <option value="transfer">Transferencia</option>
+            </select>
+          </div>
+          
+          <div class="button-group">
+            <button id="cancelPaymentBtn" class="button secondary">Cancelar</button>
+            <button id="completeOrderBtn" class="button">Finalizar y Archivar</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script src="admin.js"></script>
+</body>
+</html>
