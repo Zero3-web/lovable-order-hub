@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serenity Spa - Reservaciones</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <svg class="leaf-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+      </svg>
+      <h1>Serenity Spa</h1>
+    </div>
+    <p class="tagline">Tu momento de relajación comienza aquí</p>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h2>¿Qué deseas hacer hoy?</h2>
+        <p>Selecciona los servicios que quieres realizar y reserva tu cita</p>
+      </div>
+    </section>
+
+    <section class="reservation-form">
+      <div class="container card">
+        <form id="spa-form">
+          <div class="form-group">
+            <label for="customerName">Nombre del cliente (opcional)</label>
+            <input type="text" id="customerName" placeholder="Tu nombre">
+          </div>
+
+          <div class="form-group">
+            <label>Servicios disponibles</label>
+            <div class="services-list" id="servicesList">
+              <!-- Services will be loaded dynamically -->
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="appointmentDate">Fecha de la reserva</label>
+            <input type="date" id="appointmentDate" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="appointmentTime">Hora de la reserva</label>
+            <div class="time-slots" id="timeSlots">
+              <!-- Time slots will be generated here -->
+            </div>
+          </div>
+          
+          <div class="total-container" id="totalContainer">
+            <div class="total-row">
+              <span>Total</span>
+              <span id="totalAmount">$0</span>
+            </div>
+          </div>
+
+          <button type="submit" class="button">Confirmar Reserva</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-container">
+      <div class="lotus-loader">
+        <div class="lotus-petal p1"></div>
+        <div class="lotus-petal p2"></div>
+        <div class="lotus-petal p3"></div>
+        <div class="lotus-petal p4"></div>
+        <div class="lotus-petal p5"></div>
+        <div class="lotus-petal p6"></div>
+        <div class="lotus-center"></div>
+      </div>
+      <p class="loading-text">Procesando tu reserva...</p>
+    </div>
+  </div>
+
+  <div id="orderConfirmation" class="modal">
+    <div class="modal-content">
+      <h2>✨ ¡Reserva Confirmada!</h2>
+      <p>Tu reserva ha sido registrada correctamente.</p>
+      <p>Número de reserva: <span id="orderNumber"></span></p>
+      <p>Por favor, aguarda a ser llamado.</p>
+      <p>Fecha: <span id="confirmDate"></span></p>
+      <p>Hora: <span id="confirmTime"></span></p>
+      <button id="newOrderBtn" class="button">Nueva Reserva</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="logo">
+          <svg class="leaf-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+          </svg>
+          <h3>Serenity Spa</h3>
+        </div>
+        <p>Tu bienestar es nuestra prioridad</p>
+        <div class="footer-links">
+          <a href="index.html">Inicio</a>
+          <a href="index.html#servicios">Servicios</a>
+          <a href="index.html#nosotros">Nosotros</a>
+          <a href="index.html#contacto">Contacto</a>
+          <a href="admin.html" class="admin-link">Acceso Administración</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  <script src="app.js"></script>
+</body>
+</html>

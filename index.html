@@ -4,67 +4,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serenity Spa - Reservaciones</title>
+  <title>Serenity Spa - Tu oasis de tranquilidad</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="landing.css">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header class="header">
-    <div class="logo">
-      <svg class="leaf-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
-        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
-      </svg>
-      <h1>Serenity Spa</h1>
+<body class="landing-page">
+  <header class="landing-header">
+    <div class="container">
+      <div class="logo">
+        <svg class="leaf-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+        </svg>
+        <h1>Serenity Spa</h1>
+      </div>
+      <nav class="landing-nav">
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+        <a href="reserva.html" class="cta-button">Reservar Ahora</a>
+      </nav>
     </div>
-    <p class="tagline">Tu momento de relajación comienza aquí</p>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h2>¿Qué deseas hacer hoy?</h2>
-        <p>Selecciona los servicios que quieres realizar y reserva tu cita</p>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h2>Tu oasis de tranquilidad</h2>
+          <p>Descubre una experiencia única de relajación y bienestar en nuestro exclusivo spa, donde cada detalle está diseñado para tu confort y serenidad.</p>
+          <a href="reserva.html" class="button">Reserva tu experiencia</a>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Ambiente relajante de Serenity Spa">
+        </div>
       </div>
-    </section>
-
-    <section class="reservation-form">
-      <div class="container card">
-        <form id="spa-form">
-          <div class="form-group">
-            <label for="customerName">Nombre del cliente (opcional)</label>
-            <input type="text" id="customerName" placeholder="Tu nombre">
-          </div>
-
-          <div class="form-group">
-            <label>Servicios disponibles</label>
-            <div class="services-list" id="servicesList">
-              <!-- Services will be loaded dynamically -->
-            </div>
-          </div>
-          
-          <div class="total-container" id="totalContainer">
-            <div class="total-row">
-              <span>Total</span>
-              <span id="totalAmount">$0</span>
-            </div>
-          </div>
-
-          <button type="submit" class="button">Confirmar Reserva</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <div id="orderConfirmation" class="modal">
-    <div class="modal-content">
-      <h2>✨ ¡Reserva Confirmada!</h2>
-      <p>Tu reserva ha sido registrada correctamente.</p>
-      <p>Número de reserva: <span id="orderNumber"></span></p>
-      <p>Por favor, aguarda a ser llamado.</p>
-      <button id="newOrderBtn" class="button">Nueva Reserva</button>
     </div>
-  </div>
+  </section>
+
+  <section id="servicios" class="services">
+    <div class="container">
+      <h2 class="section-title">Nuestros Servicios</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">💆</div>
+          <h3>Masaje Relajante</h3>
+          <p>60 minutos de pura relajación para aliviar el estrés y la tensión muscular.</p>
+          <span class="service-price">$50</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">✨</div>
+          <h3>Facial Hidratante</h3>
+          <p>Tratamiento facial que devolverá la luminosidad y la hidratación a tu piel.</p>
+          <span class="service-price">$35</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">💅</div>
+          <h3>Manicura Spa</h3>
+          <p>Cuida tus manos con nuestro tratamiento especial que incluye exfoliación y masaje.</p>
+          <span class="service-price">$20</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🦶</div>
+          <h3>Pedicura Spa</h3>
+          <p>Tratamiento completo para tus pies, incluyendo baño, exfoliación y masaje relajante.</p>
+          <span class="service-price">$25</span>
+        </div>
+      </div>
+      <div class="services-cta">
+        <a href="reserva.html" class="button">Ver todos los servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros" class="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Nuestro equipo de profesionales">
+        </div>
+        <div class="about-text">
+          <h2>Sobre Nosotros</h2>
+          <p>En Serenity Spa, creemos que el bienestar comienza desde adentro. Nuestro equipo de profesionales altamente capacitados está dedicado a proporcionar una experiencia de spa excepcional, personalizada para cada cliente.</p>
+          <p>Utilizamos productos naturales de alta calidad y técnicas probadas para garantizar los mejores resultados en cada tratamiento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <div class="container">
+      <h2 class="section-title">Contáctanos</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>(123) 456-7890</span>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>info@serenityspa.com</span>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Av. Relajación 123, Ciudad Tranquila</span>
+          </div>
+          <div class="contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Lunes a Sábado: 9:00 AM - 8:00 PM<br>Domingo: 10:00 AM - 6:00 PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="container">
@@ -77,12 +141,18 @@
           <h3>Serenity Spa</h3>
         </div>
         <p>Tu bienestar es nuestra prioridad</p>
-        <a href="admin.html" class="admin-link">Acceso Administración</a>
+        <div class="footer-links">
+          <a href="reserva.html">Reservaciones</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#contacto">Contacto</a>
+          <a href="admin.html" class="admin-link">Acceso Administración</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-  <script src="app.js"></script>
+  <script src="landing.js"></script>
 </body>
 </html>

@@ -95,7 +95,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="date"] {
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid var(--border-color);
@@ -104,7 +105,8 @@ input[type="text"] {
   font-family: 'Inter', sans-serif;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="date"]:focus {
   outline: none;
   border-color: var(--spa-lavender);
   box-shadow: 0 0 0 2px rgba(184, 167, 230, 0.2);
@@ -121,6 +123,9 @@ input[type="text"]:focus {
   cursor: pointer;
   transition: background-color 0.3s ease;
   width: 100%;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
 }
 
 .button:hover {
@@ -198,6 +203,47 @@ input[type="text"]:focus {
   transform: rotate(45deg);
 }
 
+/* Time Slots */
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.75rem;
+}
+
+.time-slot {
+  position: relative;
+}
+
+.time-radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.time-label {
+  display: block;
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.time-radio:checked + .time-label {
+  background-color: var(--spa-lavender);
+  color: white;
+  border-color: var(--spa-lavender);
+}
+
+.time-radio:disabled + .time-label {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.3);
+  cursor: not-allowed;
+}
+
 /* Total Container */
 .total-container {
   background-color: rgba(184, 167, 230, 0.1);
@@ -215,6 +261,83 @@ input[type="text"]:focus {
   display: flex;
   justify-content: space-between;
   font-weight: 500;
+}
+
+/* Loading Animation */
+.loading-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 1500;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-overlay.visible {
+  display: flex;
+}
+
+.loading-container {
+  text-align: center;
+}
+
+.loading-text {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-family: 'Quicksand', sans-serif;
+  color: var(--spa-dark);
+}
+
+/* Lotus Loader */
+.lotus-loader {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.lotus-petal {
+  position: absolute;
+  width: 30px;
+  height: 60px;
+  background: var(--spa-lavender);
+  border-radius: 60% 70% 70% 60% / 60% 60% 70% 70%;
+  transform-origin: bottom center;
+  animation: petal-animation 1.5s ease-in-out infinite;
+}
+
+.lotus-petal.p1 { transform: rotate(0deg); }
+.lotus-petal.p2 { transform: rotate(60deg); }
+.lotus-petal.p3 { transform: rotate(120deg); }
+.lotus-petal.p4 { transform: rotate(180deg); }
+.lotus-petal.p5 { transform: rotate(240deg); }
+.lotus-petal.p6 { transform: rotate(300deg); }
+
+.lotus-petal.p1 { animation-delay: 0s; }
+.lotus-petal.p2 { animation-delay: 0.25s; }
+.lotus-petal.p3 { animation-delay: 0.5s; }
+.lotus-petal.p4 { animation-delay: 0.75s; }
+.lotus-petal.p5 { animation-delay: 1s; }
+.lotus-petal.p6 { animation-delay: 1.25s; }
+
+.lotus-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(to right bottom, var(--spa-mint), var(--spa-lavender));
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes petal-animation {
+  0%, 100% { opacity: 0.7; transform: translateY(0) rotate(var(--rotation)); }
+  50% { opacity: 1; transform: translateY(-15px) rotate(var(--rotation)); }
 }
 
 /* Modal Styles */
@@ -286,6 +409,25 @@ footer {
   font-size: 0.9rem;
 }
 
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-links a {
+  color: var(--spa-dark);
+  opacity: 0.7;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
 .admin-link {
   color: var(--spa-dark);
   opacity: 0.6;
@@ -306,6 +448,10 @@ footer {
 
   .hero h2 {
     font-size: 1.5rem;
+  }
+  
+  .time-slots {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   }
 }
 
