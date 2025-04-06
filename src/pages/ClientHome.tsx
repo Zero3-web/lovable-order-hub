@@ -15,7 +15,9 @@ const ClientHome = () => {
   const { availableServices, addOrder } = useSpaOrder();
   const { toast } = useToast();
   const [customerName, setCustomerName] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
   const [selectedServices, setSelectedServices] = useState<Service[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleServiceToggle = (service: Service, checked: boolean) => {
     if (checked) {
@@ -36,9 +38,53 @@ const ClientHome = () => {
       return;
     }
 
-    const newOrder = addOrder(customerName, selectedServices);
-    navigate("/order-confirmation", { state: { orderId: newOrder.id } });
+    if (!customerName.trim()) {
+      toast({
+        title: "Nombre requerido",
+        description: "Por favor, ingresa tu nombre",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!customerPhone.trim()) {
+      toast({
+        title: "Teléfono requerido",
+        description: "Por favor, ingresa tu número de teléfono",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Mostrar efecto de carga
+    setIsLoading(true);
+
+    // Simular procesamiento de la reserva
+    setTimeout(() => {
+      const newOrder = addOrder(customerName, selectedServices, customerPhone);
+      setIsLoading(false);
+      navigate("/order-confirmation", { state: { orderId: newOrder.id } });
+    }, 2000);
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen spa-gradient flex flex-col items-center justify-center py-8 md:py-12 px-4">
+        <div className="animate-pulse flex flex-col items-center">
+          <div className="lotus-loader">
+            <div className="lotus-petal p1"></div>
+            <div className="lotus-petal p2"></div>
+            <div className="lotus-petal p3"></div>
+            <div className="lotus-petal p4"></div>
+            <div className="lotus-petal p5"></div>
+            <div className="lotus-petal p6"></div>
+            <div className="lotus-center"></div>
+          </div>
+          <p className="mt-6 text-spa-dark font-medium">Procesando tu reserva...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen spa-gradient flex flex-col items-center py-8 md:py-12 px-4">
@@ -61,17 +107,35 @@ const ClientHome = () => {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
-                <label htmlFor="customerName" className="text-sm font-medium">
-                  Nombre del cliente (opcional)
-                </label>
-                <Input
-                  id="customerName"
-                  placeholder="Tu nombre"
-                  value={customerName}
-                  onChange={(e) => setCustomerName(e.target.value)}
-                  className="bg-white/50"
-                />
+              <div className="space-y-4">
+                <div>
+                  <label htmlFor="customerName" className="text-sm font-medium">
+                    Nombre del cliente
+                  </label>
+                  <Input
+                    id="customerName"
+                    placeholder="Tu nombre"
+                    value={customerName}
+                    onChange={(e) => setCustomerName(e.target.value)}
+                    className="bg-white/50 mt-1"
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="customerPhone" className="text-sm font-medium">
+                    Teléfono
+                  </label>
+                  <Input
+                    id="customerPhone"
+                    placeholder="Tu número de teléfono"
+                    value={customerPhone}
+                    onChange={(e) => setCustomerPhone(e.target.value)}
+                    className="bg-white/50 mt-1"
+                    type="tel"
+                    required
+                  />
+                </div>
               </div>
               
               <Separator className="bg-spa-lavender/30" />

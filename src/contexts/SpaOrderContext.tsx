@@ -10,6 +10,7 @@ export type Service = {
 export type SpaOrder = {
   id: string;
   customerName: string;
+  customerPhone?: string; // Nuevo campo opcional para teléfono
   services: Service[];
   status: "pending" | "in-progress" | "completed";
   createdAt: Date;
@@ -17,7 +18,7 @@ export type SpaOrder = {
 
 type SpaOrderContextType = {
   orders: SpaOrder[];
-  addOrder: (customerName: string, services: Service[]) => SpaOrder;
+  addOrder: (customerName: string, services: Service[], customerPhone?: string) => SpaOrder;
   updateOrderStatus: (orderId: string, status: "pending" | "in-progress" | "completed") => void;
   getOrderById: (orderId: string) => SpaOrder | undefined;
   availableServices: Service[];
@@ -39,6 +40,7 @@ export const SpaOrderProvider = ({ children }: { children: ReactNode }) => {
     {
       id: "1001",
       customerName: "María González",
+      customerPhone: "555-1234",
       services: [defaultServices[0], defaultServices[1]],
       status: "pending",
       createdAt: new Date(Date.now() - 3600000),
@@ -46,16 +48,18 @@ export const SpaOrderProvider = ({ children }: { children: ReactNode }) => {
     {
       id: "1002",
       customerName: "Carlos Pérez",
+      customerPhone: "555-5678",
       services: [defaultServices[2], defaultServices[4]],
       status: "in-progress",
       createdAt: new Date(Date.now() - 7200000),
     },
   ]);
 
-  const addOrder = (customerName: string, services: Service[]): SpaOrder => {
+  const addOrder = (customerName: string, services: Service[], customerPhone?: string): SpaOrder => {
     const newOrder: SpaOrder = {
       id: `${1000 + orders.length + 1}`,
       customerName: customerName || "Cliente sin nombre",
+      customerPhone,
       services,
       status: "pending",
       createdAt: new Date(),

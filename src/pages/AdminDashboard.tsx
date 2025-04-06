@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Logo from "@/components/Logo";
 import OrderCard from "@/components/OrderCard";
 import { useSpaOrder, SpaOrder } from "@/contexts/SpaOrderContext";
-import { LogOut } from "lucide-react";
+import { LogOut, PieChart } from "lucide-react";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -30,6 +30,15 @@ const AdminDashboard = () => {
         <div className="container max-w-6xl mx-auto px-4 flex justify-between items-center">
           <Logo />
           <div className="flex items-center gap-4">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => navigate("/admin/cash-report")}
+              className="flex items-center gap-1 border-spa-lavender text-spa-dark hover:bg-spa-lavender/10"
+            >
+              <PieChart className="h-4 w-4" />
+              <span>Cuadre de Caja</span>
+            </Button>
             <Button
               variant="outline"
               size="sm"
